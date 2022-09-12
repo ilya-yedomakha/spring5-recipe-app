@@ -7,17 +7,27 @@ import java.math.BigDecimal;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", nullable = false)
     private Long id;
 
     private String description;
-    private BigDecimal amouont;
+    private BigDecimal amount;
 
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
 
     @ManyToOne
     private Recipe recipe;
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+        this.recipe = recipe;
+    }
+
+    public Ingredient() {
+
+    }
 
     public Long getId() {
         return id;
@@ -35,12 +45,12 @@ public class Ingredient {
         this.description = description;
     }
 
-    public BigDecimal getAmouont() {
-        return amouont;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setAmouont(BigDecimal amouont) {
-        this.amouont = amouont;
+    public void setAmount(BigDecimal amouont) {
+        this.amount = amouont;
     }
 
     public Recipe getRecipe() {

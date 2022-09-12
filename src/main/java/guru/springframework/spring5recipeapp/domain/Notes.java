@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", nullable = false)
     private Long id;
 
     @OneToOne
